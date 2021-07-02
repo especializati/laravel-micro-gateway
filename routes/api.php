@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\{
 };
 
 Route::get('/companies', [CompanyController::class, 'index']);
+Route::post('/companies', [CompanyController::class, 'store']);
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);

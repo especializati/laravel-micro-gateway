@@ -24,4 +24,11 @@ class CompanyService
     
         return $this->defaultResponse->response($response);
     }
+
+    public function newCompany(array $params = [])
+    {
+        $response = $this->http->post($this->url . '/companies', $params);
+    
+        return $this->defaultResponse->response($response);
+    }
 }

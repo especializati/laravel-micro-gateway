@@ -19,4 +19,9 @@ class CompanyController extends Controller
     {
         return $this->companyService->getAllCompanies($request->all());
     }
+
+    public function store(Request $request)
+    {
+        return $this->companyService->newCompany($request->all());
+    }
 }
