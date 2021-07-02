@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+    # imagem micro gateway
+    micro_gateway:
+        build: 
+            args: 
+                user: carlos
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: laravel-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        networks: 
+            - gateway
+    
+    # nginx
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        ports: 
+            - 8098:80
+        volumes: 
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        networks: 
+            - gateway
+
+networks: 
+    gateway:
+        driver: bridge
