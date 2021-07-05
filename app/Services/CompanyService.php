@@ -38,4 +38,11 @@ class CompanyService
     
         return response()->json(json_decode($response->body()), $response->status());
     }
+
+    public function deleteCompany($identify)
+    {
+        $response = $this->http->delete($this->url . '/' . $identify);
+    
+        return response()->json(json_decode($response->body()), $response->status());
+    }
 }

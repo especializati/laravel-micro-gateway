@@ -29,4 +29,9 @@ class CompanyController extends Controller
     {
         return $this->companyService->getCompanyByIdentify($identify);
     }
+
+    public function destroy($identify)
+    {
+        return $this->companyService->deleteCompany($identify);
+    }
 }
