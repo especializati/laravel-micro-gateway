@@ -30,6 +30,11 @@ class CompanyController extends Controller
         return $this->companyService->getCompanyByIdentify($identify);
     }
 
+    public function update(Request $request, $identify)
+    {
+        return $this->companyService->updateCompany($identify, $request->all());
+    }
+
     public function destroy($identify)
     {
         return $this->companyService->deleteCompany($identify);

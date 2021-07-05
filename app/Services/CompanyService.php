@@ -45,4 +45,11 @@ class CompanyService
     
         return response()->json(json_decode($response->body()), $response->status());
     }
+
+    public function updateCompany(string $identify, array $params = [])
+    {
+        $response = $this->http->put($this->url . '/' . $identify, $params);
+    
+        return response()->json(json_decode($response->body()), $response->status());
+    }
 }
