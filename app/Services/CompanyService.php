@@ -14,21 +14,28 @@ class CompanyService
     public function __construct(DefaultResponse $defaultResponse)
     {
         $this->defaultResponse = $defaultResponse;
-        $this->url = config('microservices.available.micro_01.url');
+        $this->url = config('microservices.available.micro_01.url') . '/companies';
         $this->http = Http::acceptJson();
     }
 
     public function getAllCompanies(array $params = [])
     {
-        $response = $this->http->get($this->url . '/companies', $params);
+        $response = $this->http->get($this->url, $params);
     
         return $this->defaultResponse->response($response);
     }
 
     public function newCompany(array $params = [])
     {
-        $response = $this->http->post($this->url . '/companies', $params);
+        $response = $this->http->post($this->url, $params);
     
         return $this->defaultResponse->response($response);
+    }
+
+    public function getCompanyByIdentify($identify)
+    {
+        $response = $this->http->get($this->url . '/' . $identify);
+    
+        return response()->json(json_decode($response->body()), $response->status());
     }
 }

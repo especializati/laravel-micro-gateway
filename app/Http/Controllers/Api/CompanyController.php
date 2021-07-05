@@ -24,4 +24,9 @@ class CompanyController extends Controller
     {
         return $this->companyService->newCompany($request->all());
     }
+
+    public function show($identify)
+    {
+        return $this->companyService->getCompanyByIdentify($identify);
+    }
 }
