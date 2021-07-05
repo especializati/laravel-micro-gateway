@@ -16,7 +16,7 @@ class DefaultResponse
         
         return [
             'data' => $this->data($body->data),
-            'meta' => $this->meta($body->meta)
+            'meta' => isset($body->meta) ? $this->meta($body->meta) : []
         ];
     }
 

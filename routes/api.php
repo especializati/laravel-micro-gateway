@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\{
+    CategoryController,
     CompanyController,
     EvaluationController
 };
 
+Route::apiResource('/categories', CategoryController::class);
 
 Route::post('/companies/{identify}/evaluations', [EvaluationController::class, 'store']);
 
