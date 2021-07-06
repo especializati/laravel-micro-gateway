@@ -22,7 +22,7 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
-        return $this->companyService->newCompany($request->all());
+        return $this->companyService->newCompany($request->all(), $request->image);
     }
 
     public function show($identify)
@@ -32,7 +32,7 @@ class CompanyController extends Controller
 
     public function update(Request $request, $identify)
     {
-        return $this->companyService->updateCompany($identify, $request->all());
+        return $this->companyService->updateCompany($identify, $request->all(), $request->image);
     }
 
     public function destroy($identify)
