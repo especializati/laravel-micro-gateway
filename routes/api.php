@@ -6,6 +6,15 @@ use App\Http\Controllers\Api\{
     CompanyController,
     EvaluationController
 };
+use App\Http\Controllers\Api\Auth\{
+    RegisterController
+};
+
+/**
+ * Auth and Register
+ */
+Route::post('/register', [RegisterController::class, 'register']);
+
 
 Route::apiResource('/categories', CategoryController::class);
 
