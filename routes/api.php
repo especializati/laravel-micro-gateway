@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\{
     CategoryController,
     CompanyController,
-    EvaluationController
+    EvaluationController,
+    PermissionUserController,
+    ResourceController
 };
 use App\Http\Controllers\Api\Auth\{
     AuthController,
@@ -18,6 +20,13 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/auth', [AuthController::class, 'auth']);
 Route::get('/me', [AuthController::class, 'me']);
 Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::get('/resources', [ResourceController::class, 'index']);
+
+/**
+ * Users
+ */
+Route::post('/users/permissions', [PermissionUserController::class, 'addPermissionUser']);
 
 
 Route::apiResource('/categories', CategoryController::class);
