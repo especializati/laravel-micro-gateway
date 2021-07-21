@@ -26,6 +26,7 @@ Route::get('/resources', [ResourceController::class, 'index']);
 /**
  * Users
  */
+Route::get('/users/{identify}/permissions', [PermissionUserController::class, 'getPermissionsUser']);
 Route::delete('/users/permissions', [PermissionUserController::class, 'removePermissionUser']);
 Route::post('/users/permissions', [PermissionUserController::class, 'addPermissionUser']);
 

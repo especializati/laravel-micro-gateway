@@ -35,4 +35,11 @@ class UserService
 
         return response()->json(json_decode($response->body()), $response->status());
     }
+
+    public function getPermissionsUser($identity)
+    {
+        $response = $this->http->get("$this->url/users/{$identity}/permissions");
+
+        return response()->json(json_decode($response->body()), $response->status());
+    }
 }
