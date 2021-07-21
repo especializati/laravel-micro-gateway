@@ -35,13 +35,13 @@ Route::apiResource('/users', UserController::class);
 
 Route::apiResource('/categories', CategoryController::class);
 
-Route::post('/companies/{identify}/evaluations', [EvaluationController::class, 'store']);
+Route::post('/companies/{identify}/evaluations', [EvaluationController::class, 'store'])->middleware('auth_micro');
 
 Route::get('/companies', [CompanyController::class, 'index'])->middleware('permission:visualizar_empresas');
-Route::post('/companies', [CompanyController::class, 'store']);
-Route::get('/companies/{identify}', [CompanyController::class, 'show']);
-Route::delete('/companies/{identify}', [CompanyController::class, 'destroy']);
-Route::put('/companies/{identify}', [CompanyController::class, 'update']);
+Route::post('/companies', [CompanyController::class, 'store'])->middleware('permission:cadastrar_empresas');
+Route::get('/companies/{identify}', [CompanyController::class, 'show'])->middleware('permission:visualizar_empresa');
+Route::delete('/companies/{identify}', [CompanyController::class, 'destroy'])->middleware('permission:deletar_empresa');
+Route::put('/companies/{identify}', [CompanyController::class, 'update'])->middleware('permission:editar_empresa');
 
 Route::get('/', function () {
     return response()->json(['message' => 'success']);

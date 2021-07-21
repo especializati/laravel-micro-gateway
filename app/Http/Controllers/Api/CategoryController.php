@@ -15,6 +15,9 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
 
         $this->middleware('permission:visualizar_categorias')->only('index');
+        $this->middleware('permission:visualizar_categoria')->only('show');
+        $this->middleware('permission:deletar_categoria')->only('destroy');
+        $this->middleware('permission:editar_categoria')->only('update');
     }
 
     public function index(Request $request)
