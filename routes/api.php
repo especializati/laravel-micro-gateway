@@ -6,7 +6,8 @@ use App\Http\Controllers\Api\{
     CompanyController,
     EvaluationController,
     PermissionUserController,
-    ResourceController
+    ResourceController,
+    UserController
 };
 use App\Http\Controllers\Api\Auth\{
     AuthController,
@@ -29,6 +30,7 @@ Route::get('/resources', [ResourceController::class, 'index']);
 Route::get('/users/{identify}/permissions', [PermissionUserController::class, 'getPermissionsUser']);
 Route::delete('/users/permissions', [PermissionUserController::class, 'removePermissionUser']);
 Route::post('/users/permissions', [PermissionUserController::class, 'addPermissionUser']);
+Route::apiResource('/users', UserController::class);
 
 
 Route::apiResource('/categories', CategoryController::class);
