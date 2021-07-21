@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\{
     EvaluationController
 };
 use App\Http\Controllers\Api\Auth\{
+    AuthController,
     RegisterController
 };
 
@@ -14,6 +15,9 @@ use App\Http\Controllers\Api\Auth\{
  * Auth and Register
  */
 Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/auth', [AuthController::class, 'auth']);
+Route::get('/me', [AuthController::class, 'me']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 
 Route::apiResource('/categories', CategoryController::class);
