@@ -13,6 +13,8 @@ class CategoryController extends Controller
     public function __construct(CategoryService $categoryService)
     {
         $this->categoryService = $categoryService;
+
+        $this->middleware('permission:visualizar_categorias')->only('index');
     }
 
     public function index(Request $request)

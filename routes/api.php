@@ -37,7 +37,7 @@ Route::apiResource('/categories', CategoryController::class);
 
 Route::post('/companies/{identify}/evaluations', [EvaluationController::class, 'store']);
 
-Route::get('/companies', [CompanyController::class, 'index']);
+Route::get('/companies', [CompanyController::class, 'index'])->middleware('permission:visualizar_empresas');
 Route::post('/companies', [CompanyController::class, 'store']);
 Route::get('/companies/{identify}', [CompanyController::class, 'show']);
 Route::delete('/companies/{identify}', [CompanyController::class, 'destroy']);
