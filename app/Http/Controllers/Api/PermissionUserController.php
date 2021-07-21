@@ -19,4 +19,9 @@ class PermissionUserController extends Controller
     {
         return $this->userService->addNewPermissionForUser($request->all());
     }
+
+    public function removePermissionUser(Request $request)
+    {
+        return $this->userService->removePermissionForUser($request->all());
+    }
 }

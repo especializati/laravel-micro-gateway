@@ -15,16 +15,23 @@ class UserService
     {
         $this->defaultResponse = $defaultResponse;
         $this->url = config('microservices.available.micro_auth.url');
-        $this->http = Http::acceptJson();
+        $this->http = Http::acceptJson()
+                            ->withHeaders([
+                                'Authorization' => request()->header('Authorization')
+                            ]);
     }
 
     public function addNewPermissionForUser(array $params = [])
     {
         $response = $this->http
-                            ->withHeaders([
-                                'Authorization' => request()->header('Authorization')
-                            ])
                             ->post($this->url . '/users/permissions', $params);
+
+        return response()->json(json_decode($response->body()), $response->status());
+    }
+
+    public function removePermissionForUser(array $params = [])
+    {
+        $response = $this->http->delete($this->url . '/users/permissions', $params);
 
         return response()->json(json_decode($response->body()), $response->status());
     }
